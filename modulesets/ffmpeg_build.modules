@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no"?> <!--*- mode: nxml -*-->
+
+<!DOCTYPE moduleset SYSTEM "moduleset.dtd">
+<?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
+<moduleset>
+  <repository type="git" name="ffmpeg_repo"
+      href="https://git.ffmpeg.org/"/>
+
+  <autotools id="ffmpeg"
+             autogen-template="./configure --prefix=%(prefix)s --libdir=%(libdir)s --enable-debug --enable-gpl --enable-libx264 --enable-libx265 --disable-stripping --enable-libvpx --enable-libopus --enable-nonfree">
+    <branch repo="ffmpeg_repo" module="ffmpeg.git" checkoutdir="ffmpeg" />
+  </autotools>
+
+  <metamodule id="ffmpeg_build">
+    <dependencies>
+      <dep package="ffmpeg"/>
+    </dependencies>
+  </metamodule>
+
+</moduleset>
+
